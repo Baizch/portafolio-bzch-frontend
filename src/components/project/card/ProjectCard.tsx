@@ -22,7 +22,6 @@ const ProjectCard = (React.FC<ProjectCardProps> = ({ project, onClick }) => {
               objectFit: 'cover',
               transition: 'transform 0.3s ease-in-out',
             }}
-            className='hover:scale-110'
           />
         </div>
       }

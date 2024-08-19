@@ -1,7 +1,9 @@
 export interface IProject {
   title: string;
+  image: string;
+  technologies: string[];
   description: string;
-  demoVideo: string;
+  demo: string;
   liveLink: string;
-  codeLink: string;
+  githubLink: string;
 }

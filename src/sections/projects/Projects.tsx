@@ -23,7 +23,7 @@ const Projects: React.FC = () => {
       technologies: ['Vue', 'TypeScript', 'Vite', 'Ant Design', 'Docker'],
       description:
         'Uma simples tela para consultar informações de qualquer CEP.',
-      demo: 'https://vimeo.com/997800635?share=copy',
+      demo: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm95MmZmd3MyMWVobGlxeTAzcXF5emE2bnRyeTBvOXVjM29mNGx4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FCp5B8KnsTa6YB6IrG/giphy.gif',
       liveLink: 'https://consulta-viacep-frontend.vercel.app/',
       githubLink: 'https://github.com/Baizch/consulta-viacep-frontend',
     },
