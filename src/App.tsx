@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 
 import About from './sections/about/About';
 import Technologies from './sections/technologies/Technologies';
+import Projects from './sections/projects/Projects';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
       <Header />
       <About />
       <Technologies />
+      <Projects />
 
       <Footer />
     </div>
