@@ -5,8 +5,7 @@ import emailjs from '@emailjs/browser';
 import Success from '../success-component/Success';
 import Error from '../error-component/Error';
 import InitialForm from '../empty-form/InitialForm';
-
-const { TextArea } = Input;
+import ResendForm from '../resend-form/ResendForm';
 
 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -21,7 +20,6 @@ interface FormData {
 }
 
 const ContactForm: React.FC = () => {
-  const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -77,85 +75,16 @@ const ContactForm: React.FC = () => {
           setFormData={setFormData}
           isSubmitting={isSubmitting}
           setIsError={setIsError}
+          sendEmail={sendEmail}
         />
       )}
 
-      {/* componente de formulario com dados */}
       {isResend && !isSuccess && (
-        <Form
-          form={formInstance}
-          ref={form}
-          name='contact'
-          onFinish={sendEmail}
-          layout='vertical'
-          autoComplete='off'
-          initialValues={formData}
-        >
-          <Form.Item
-            label='Nome'
-            name='firstName'
-            rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label='Sobrenome'
-            name='lastName'
-            rules={[
-              { required: true, message: 'Por favor, insira seu sobrenome!' },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label='Email'
-            name='email'
-            rules={[
-              { required: true, message: 'Por favor, insira seu email!' },
-              {
-                type: 'email',
-                message: 'Por favor, insira um e-mail válido!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label='Assunto'
-            name='subject'
-            rules={[
-              { required: true, message: 'Por favor, insira o assunto!' },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label='Mensagem'
-            name='message'
-            rules={[
-              { required: true, message: 'Por favor, insira sua mensagem!' },
-            ]}
-          >
-            <TextArea rows={4} />
-          </Form.Item>
-
-          <Form.Item>
-            {!isSubmitting && (
-              <Button
-                type='primary'
-                htmlType='submit'
-                className='bg-sky-500 text-white py-6 mt-4'
-              >
-                Enviar
-              </Button>
-            )}
-            {isSubmitting && <Spin size='large' className='mt-4' />}
-          </Form.Item>
-        </Form>
+        <ResendForm
+          formData={formData}
+          isSubmitting={isSubmitting}
+          sendEmail={sendEmail}
+        />
       )}
     </>
   );

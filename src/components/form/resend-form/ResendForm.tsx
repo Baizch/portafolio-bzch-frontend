@@ -3,16 +3,14 @@ import { Form, Input, Button, Spin } from 'antd';
 
 const { TextArea } = Input;
 
-interface InitialFormProps {
+interface ResendFormProps {
   formData: FormData | null;
-  setFormData: (formData: FormData) => void;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
 }
 
-const InitialForm: React.FC<InitialFormProps> = ({
+const ResendForm: React.FC<ResendFormProps> = ({
   formData,
-  setFormData,
   isSubmitting,
   sendEmail,
 }) => {
@@ -27,17 +25,14 @@ const InitialForm: React.FC<InitialFormProps> = ({
       onFinish={sendEmail}
       layout='vertical'
       autoComplete='off'
+      initialValues={formData}
     >
       <Form.Item
         label='Nome'
         name='firstName'
         rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
       >
-        <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, firstName: e.target.value });
-          }}
-        />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -47,11 +42,7 @@ const InitialForm: React.FC<InitialFormProps> = ({
           { required: true, message: 'Por favor, insira seu sobrenome!' },
         ]}
       >
-        <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, lastName: e.target.value });
-          }}
-        />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -65,11 +56,7 @@ const InitialForm: React.FC<InitialFormProps> = ({
           },
         ]}
       >
-        <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, email: e.target.value });
-          }}
-        />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -77,11 +64,7 @@ const InitialForm: React.FC<InitialFormProps> = ({
         name='subject'
         rules={[{ required: true, message: 'Por favor, insira o assunto!' }]}
       >
-        <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, subject: e.target.value });
-          }}
-        />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -89,12 +72,7 @@ const InitialForm: React.FC<InitialFormProps> = ({
         name='message'
         rules={[{ required: true, message: 'Por favor, insira sua mensagem!' }]}
       >
-        <TextArea
-          rows={4}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, message: e.target.value });
-          }}
-        />
+        <TextArea rows={4} />
       </Form.Item>
 
       <Form.Item>
@@ -113,4 +91,4 @@ const InitialForm: React.FC<InitialFormProps> = ({
   );
 };
 
-export default InitialForm;
+export default ResendForm;
