@@ -2,7 +2,7 @@ import React from 'react';
 
 import SectionDivider from '../../components/divider/Divider';
 import Title from '../../components/title/Title';
-import ContactForm from '../../components/form/Form';
+import ContactForm from '../../components/form/contact-form/Form';
 
 const Contact = (React.FC = () => {
   return (

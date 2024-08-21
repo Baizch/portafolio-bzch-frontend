@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Input, Button, Spin, Result } from 'antd';
 import emailjs from '@emailjs/browser';
 
-import SectionDivider from '../divider/Divider';
+import ResultSuccess from '../result-success/ResultSuccess';
 
 const { TextArea } = Input;
 
@@ -62,9 +62,9 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    // Componente de sucesso
     <>
-      {isSuccess && (
+      {/* Componente de sucesso */}
+      {/* {isSuccess && (
         <Result
           status='success'
           title='Mensagem enviada com sucesso'
@@ -76,7 +76,8 @@ const ContactForm: React.FC = () => {
             </>,
           ]}
         />
-      )}
+      )} */}
+      {isSuccess && <ResultSuccess />}
 
       {/* Componente de erro */}
       {isError && !isResend && (
@@ -93,6 +94,7 @@ const ContactForm: React.FC = () => {
         />
       )}
 
+      {/* componente de formulario vazio */}
       {!isSuccess && !isError && isEmptyForm && (
         <Form
           form={formInstance}
@@ -190,6 +192,7 @@ const ContactForm: React.FC = () => {
         </Form>
       )}
 
+      {/* componente de formulario com dados */}
       {isResend && (
         <Form
           form={formInstance}
