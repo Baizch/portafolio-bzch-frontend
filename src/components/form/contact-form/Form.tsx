@@ -3,6 +3,7 @@ import { Form, Input, Button, Spin, Result } from 'antd';
 import emailjs from '@emailjs/browser';
 
 import ResultSuccess from '../result-success/ResultSuccess';
+import ResultError from '../result-error/ResultError';
 
 const { TextArea } = Input;
 
@@ -63,35 +64,10 @@ const ContactForm: React.FC = () => {
 
   return (
     <>
-      {/* Componente de sucesso */}
-      {/* {isSuccess && (
-        <Result
-          status='success'
-          title='Mensagem enviada com sucesso'
-          subTitle='Recebi sua mensagem, estarei retornando o contato em breve'
-          extra={[
-            <>
-              <SectionDivider />
-              <p>Você poderá enviar outra mensagem dentro de pouco</p>
-            </>,
-          ]}
-        />
-      )} */}
       {isSuccess && <ResultSuccess />}
 
-      {/* Componente de erro */}
       {isError && !isResend && (
-        <Result
-          status='error'
-          title='Erro ao enviar mensagem'
-          subTitle='Ocorreu um erro na hora de enviar sua mensagem, gostaria de tentar novamente?'
-          extra={[
-            <Button onClick={() => setIsResend(true)}>Reenviar</Button>,
-            <Button type='primary' danger onClick={handleCancel}>
-              Cancelar
-            </Button>,
-          ]}
-        />
+        <ResultError setIsResend={setIsResend} handleCancel={handleCancel} />
       )}
 
       {/* componente de formulario vazio */}
@@ -100,7 +76,7 @@ const ContactForm: React.FC = () => {
           form={formInstance}
           ref={form}
           name='contact'
-          onFinish={sendEmail}
+          // onFinish={sendEmail}
           layout='vertical'
           autoComplete='off'
         >
@@ -183,6 +159,7 @@ const ContactForm: React.FC = () => {
                 type='primary'
                 htmlType='submit'
                 className='bg-sky-500 text-white py-6 mt-4'
+                onClick={() => setIsError(true)}
               >
                 Enviar
               </Button>
@@ -193,7 +170,7 @@ const ContactForm: React.FC = () => {
       )}
 
       {/* componente de formulario com dados */}
-      {isResend && (
+      {isResend && !isSuccess && (
         <Form
           form={formInstance}
           ref={form}
