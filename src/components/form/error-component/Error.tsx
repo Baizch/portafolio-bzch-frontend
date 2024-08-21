@@ -1,15 +1,12 @@
 import React from 'react';
 import { Result, Button } from 'antd';
 
-interface ResultErrorProps {
+interface ErrorProps {
   setIsResend: (value: boolean) => void;
   handleCancel: () => void;
 }
 
-const ResultError: React.FC<ResultErrorProps> = ({
-  setIsResend,
-  handleCancel,
-}) => (
+const Error: React.FC<ErrorProps> = ({ setIsResend, handleCancel }) => (
   <Result
     status='error'
     title='Erro ao enviar mensagem'
@@ -25,4 +22,4 @@ const ResultError: React.FC<ResultErrorProps> = ({
   />
 );
 
-export default ResultError;
+export default Error;

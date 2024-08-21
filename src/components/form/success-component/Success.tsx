@@ -3,7 +3,7 @@ import { Result } from 'antd';
 
 import SectionDivider from '../../divider/Divider';
 
-const ResultSuccess: React.FC = () => (
+const Success: React.FC = () => (
   <Result
     status='success'
     title='Mensagem enviada com sucesso'
@@ -17,4 +17,4 @@ const ResultSuccess: React.FC = () => (
   />
 );
 
-export default ResultSuccess;
+export default Success;
