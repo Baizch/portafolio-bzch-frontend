@@ -1,12 +1,14 @@
 import React from 'react';
 
+import Title from '../../components/title/Title';
+
 const About: React.FC = () => (
   <section
     id='sobre'
     className='-mt-64 h-screen flex flex-col justify-center items-center bg-white p-8'
   >
     <div className='max-w-3xl text-center'>
-      <h2 className='text-4xl font-bold text-black mb-4'>Sobre Mim</h2>
+      <Title title='Sobre mim' />
       <p className='text-lg text-black leading-relaxed mb-6'>
         Sou um desenvolvedor apaixonado por tecnologia e inovação, sempre em
         busca de novos conhecimentos e desafios. Sou formado em{' '}

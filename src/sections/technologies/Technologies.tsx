@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
 
+import SectionDivider from '../../components/divider/Divider';
+import Title from '../../components/title/Title';
+
 const { Meta } = Card;
 
 const Technologies: React.FC = () => {
@@ -9,6 +12,7 @@ const Technologies: React.FC = () => {
     icon: string;
   }
 
+  // TO DO: retornar do back
   const technologies: ITechnologies[] = [
     {
       name: 'JavaScript',
@@ -75,11 +79,8 @@ const Technologies: React.FC = () => {
   return (
     <section id='tecnologias' className='bg-white py-12'>
       <div className='max-w-5xl mx-auto px-4'>
-        <div className='border-t-4 border-sky-200 mb-8'></div>
-
-        <h2 className='text-3xl font-bold text-black mb-8 text-center'>
-          Tecnologias
-        </h2>
+        <SectionDivider />
+        <Title title='Tecnologias' />
 
         <Row gutter={[16, 16]} justify='center'>
           {technologies.map((tech, key) => (

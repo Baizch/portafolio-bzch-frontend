@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer';
 import About from './sections/about/About';
 import Technologies from './sections/technologies/Technologies';
 import Projects from './sections/projects/Projects';
+import Contact from './sections/contact/Contact';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
       <About />
       <Technologies />
       <Projects />
-
+      <Contact />
       <Footer />
     </div>
   );

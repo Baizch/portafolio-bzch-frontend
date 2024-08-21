@@ -4,6 +4,8 @@ import type { IProject } from '../../types/types';
 
 import ProjectCard from '../../components/project/card/ProjectCard';
 import ProjectModal from '../../components/project/modal/ProjectModal';
+import SectionDivider from '../../components/divider/Divider';
+import Title from '../../components/title/Title';
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
@@ -32,13 +34,8 @@ const Projects: React.FC = () => {
   return (
     <section id='projetos' className='bg-white py-12'>
       <div className='max-w-5xl mx-auto px-4'>
-        {/* TO DO: componetizar */}
-        <div className='border-t-4 border-sky-200 mb-8'></div>
-
-        {/* TO DO: componetizar */}
-        <h2 className='text-3xl font-bold text-black mb-8 text-center'>
-          Projetos
-        </h2>
+        <SectionDivider />
+        <Title title='Projetos' />
 
         <Row gutter={[16, 16]} justify='center'>
           {projects.map((project, key) => (
