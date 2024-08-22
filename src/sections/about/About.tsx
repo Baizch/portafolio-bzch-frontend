@@ -3,11 +3,8 @@ import React from 'react';
 import Title from '../../components/title/Title';
 
 const About: React.FC = () => (
-  <section
-    id='sobre'
-    className='-mt-64 h-screen flex flex-col justify-center items-center bg-white p-8'
-  >
-    <div className='max-w-3xl text-center'>
+  <section id='sobre' className='bg-white py-12'>
+    <div className='max-w-5xl mx-auto px-4'>
       <Title title='Sobre mim' />
       <p className='text-lg text-black leading-relaxed mb-6'>
         Sou um desenvolvedor apaixonado por tecnologia e inovação, sempre em
