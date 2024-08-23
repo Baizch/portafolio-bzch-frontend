@@ -4,6 +4,7 @@ import 'antd/dist/reset.css';
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import BackToTopButton from './components/backtop/BackTop';
 
 import About from './sections/about/About';
 import Technologies from './sections/technologies/Technologies';
@@ -13,6 +14,7 @@ import Contact from './sections/contact/Contact';
 function App() {
   return (
     <div>
+      <BackToTopButton />
       <Header />
       <About />
       <Technologies />
