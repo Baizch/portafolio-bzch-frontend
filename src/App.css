@@ -6,4 +6,14 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  font-family: 'Noto Sans Hanunoo', sans-serif;
+}
+
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-menu,
+.ant-card,
+.ant-modal {
+  font-family: 'Noto Sans Hanunoo', sans-serif;
 }
