@@ -2,13 +2,15 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 import type { IProject } from '../../../types/types';
 
+import SectionDivider from '../../divider/Divider';
+
 interface ProjectModalProps {
   project: IProject | null;
   isVisible: boolean;
   onClose: () => void;
 }
 
-const ProjectModal = (React.FC<ProjectModalProps> = ({
+const ProjectModal: React.FC<ProjectModalProps> = ({
   project,
   isVisible,
   onClose,
@@ -39,16 +41,23 @@ const ProjectModal = (React.FC<ProjectModalProps> = ({
         </Button>,
       ]}
     >
-      <p className='mb-4'>{project.description}</p>
+      <SectionDivider />
+      <p className='-mt-4 mb-4'>{project.description}</p>
       <div>
         <img
           src={project.demo}
           alt={`${project.title} Demo`}
-          style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+          style={{
+            width: '100%',
+            height: 'auto',
+            borderRadius: '10px',
+            marginBottom: '20px',
+          }}
         />
       </div>
+      <SectionDivider />
     </Modal>
   );
-});
+};
 
 export default ProjectModal;

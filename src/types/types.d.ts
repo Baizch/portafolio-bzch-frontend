@@ -7,3 +7,7 @@ export interface IProject {
   liveLink: string;
   githubLink: string;
 }
+
+export interface NavBarProps {
+  scrollToSection: (sectionId: string) => void;
+}

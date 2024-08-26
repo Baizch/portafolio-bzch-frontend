@@ -8,7 +8,7 @@ interface ProjectCardProps {
   project: IProject;
   onClick: () => void;
 }
-const ProjectCard = (React.FC<ProjectCardProps> = ({ project, onClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   return (
     <Card
       hoverable
@@ -18,7 +18,6 @@ const ProjectCard = (React.FC<ProjectCardProps> = ({ project, onClick }) => {
             alt={project.title}
             src={project.image}
             style={{
-              height: '200px',
               objectFit: 'cover',
               transition: 'transform 0.3s ease-in-out',
             }}
@@ -45,6 +44,6 @@ const ProjectCard = (React.FC<ProjectCardProps> = ({ project, onClick }) => {
       </Button>
     </Card>
   );
-});
+};
 
 export default ProjectCard;

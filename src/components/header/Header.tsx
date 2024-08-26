@@ -1,38 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { scrollToSection } from '../../utils/scrollToSection';
 
-const Header: React.FC = () => (
-  <header className='sticky top-0 z-50 bg-white dark:bg-sky-600 shadow-md'>
-    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center py-4'>
-      <nav className='space-x-8'>
-        <button
-          className='text-gray-800 dark:text-gray-200 hover:text-yellow-300'
-          onClick={() => scrollToSection('sobre')}
-        >
-          Sobre mim
-        </button>
-        <button
-          className='text-gray-800 dark:text-gray-200 hover:text-yellow-300'
-          onClick={() => scrollToSection('tecnologias')}
-        >
-          Tecnologias
-        </button>
-        <button
-          className='text-gray-800 dark:text-gray-200 hover:text-yellow-300'
-          onClick={() => scrollToSection('projetos')}
-        >
-          Projetos
-        </button>
-        <button
-          className='text-gray-800 dark:text-gray-200 hover:text-yellow-300'
-          onClick={() => scrollToSection('contato')}
-        >
-          Contato
-        </button>
-      </nav>
-    </div>
-  </header>
-);
+import DesktopNavBar from './desktop-navbar/DesktopNavBar';
+import MobileNavBar from './mobile-navbar/MobileNavBar';
+import MobileMenu from './mobile-menu/MobileMenu';
+
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <header className='sticky top-0 z-50 bg-white dark:bg-sky-600 shadow-md'>
+      <div className='relative w-full flex justify-center items-center py-4 xs:h-20'>
+        <MobileMenu toggleMenu={toggleMenu} />
+        <DesktopNavBar scrollToSection={scrollToSection} />
+      </div>
+
+      {isOpen && <MobileNavBar scrollToSection={scrollToSection} />}
+    </header>
+  );
+};
 
 export default Header;
