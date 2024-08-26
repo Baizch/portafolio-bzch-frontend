@@ -17,3 +17,7 @@
 .ant-modal {
   font-family: 'Noto Sans Hanunoo', sans-serif;
 }
+
+.ant-card-meta-title {
+  white-space: normal !important;
+}
