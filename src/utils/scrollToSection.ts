@@ -1,12 +1,12 @@
 export const scrollToSection = (
   sectionId: string,
-  offset: number = 80,
+  offset: number = 0,
   duration: number = 1000
 ) => {
   const targetSection = document.getElementById(sectionId);
   if (targetSection) {
     const targetPosition = targetSection.offsetTop - offset;
-    const startPosition = window.pageYOffset;
+    const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
     let startTime: number | null = null;
 

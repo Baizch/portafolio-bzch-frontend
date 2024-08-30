@@ -8,7 +8,7 @@ const MobileNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('sobre');
+            scrollToSection('sobre', 250);
             toggleMenu();
           }}
         >
@@ -17,7 +17,7 @@ const MobileNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('tecnologias');
+            scrollToSection('tecnologias', 250);
             toggleMenu();
           }}
         >
@@ -26,7 +26,7 @@ const MobileNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('projetos');
+            scrollToSection('projetos', 250);
             toggleMenu();
           }}
         >
@@ -35,7 +35,7 @@ const MobileNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('contato');
+            scrollToSection('contato', 250);
             toggleMenu();
           }}
         >
