@@ -2,7 +2,7 @@ export const scrollToSection = (
   sectionId: string,
   offset: number = 0,
   duration: number = 1000
-) => {
+): void => {
   const targetSection = document.getElementById(sectionId);
   if (targetSection) {
     const targetPosition = targetSection.offsetTop - offset;

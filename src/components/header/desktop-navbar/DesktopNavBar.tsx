@@ -1,5 +1,5 @@
 import React from 'react';
-import type { NavBarProps } from 'src/types/types';
+import type { NavBarProps } from 'src/common/interfaces';
 
 const DesktopNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
   return (

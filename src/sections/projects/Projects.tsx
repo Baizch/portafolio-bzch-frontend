@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'antd';
-import type { IProject } from '../../types/types';
+import { IProject, DarkModeProps } from '../../common/interfaces';
 
 import ProjectCard from '../../components/project/card/ProjectCard';
 import ProjectModal from '../../components/project/modal/ProjectModal';
 import SectionDivider from '../../components/divider/Divider';
 import Title from '../../components/title/Title';
 
-const Projects: React.FC = () => {
+const Projects = ({ isDarkMode }: DarkModeProps) => {
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
 
-  const openModal = (project: IProject) => {
+  const openModal = (project: IProject): void => {
     setSelectedProject(project);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setSelectedProject(null);
   };
 
@@ -32,10 +32,13 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id='projetos' className='bg-white py-12'>
+    <section
+      id='projetos'
+      className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} py-12`}
+    >
       <div className='max-w-5xl mx-auto px-4'>
-        <SectionDivider />
-        <Title title='Projetos' />
+        <SectionDivider isDarkMode={isDarkMode} />
+        <Title title='Projetos' isDarkMode={isDarkMode} />
 
         <Row gutter={[16, 16]} justify='center'>
           {projects.map((project, key) => (
@@ -43,6 +46,7 @@ const Projects: React.FC = () => {
               <ProjectCard
                 project={project}
                 onClick={() => openModal(project)}
+                isDarkMode={isDarkMode}
               />
             </Col>
           ))}
@@ -53,6 +57,7 @@ const Projects: React.FC = () => {
             project={selectedProject}
             isVisible={!!selectedProject}
             onClose={closeModal}
+            isDarkMode={isDarkMode}
           />
         )}
       </div>

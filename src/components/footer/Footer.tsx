@@ -1,10 +1,16 @@
 import React from 'react';
 
+import { DarkModeProps } from '../../common/interfaces';
+
 import LinkedInIcon from './LinkedInIcon';
 import GithubIcon from './GithubIcon';
 
-const Footer: React.FC = () => (
-  <footer className='bg-neutral-100 text-center text-neutral-600 dark:bg-sky-600 dark:text-neutral-200 lg:text-left h-12 mt-auto'>
+const Footer = ({ isDarkMode }: DarkModeProps) => (
+  <footer
+    className={`bg-neutral-100 text-center text-neutral-600 ${
+      isDarkMode ? 'bg-sky-950' : 'bg-sky-600'
+    } lg:text-left h-12 mt-auto`}
+  >
     <div className='flex justify-center'>
       <a
         href='https://www.linkedin.com/in/franco-baisch/'
@@ -21,8 +27,12 @@ const Footer: React.FC = () => (
         <GithubIcon />
       </a>
     </div>
-    <div className='bg-neutral-200 p-6 text-center dark:bg-sky-600 -mt-2'>
-      <span>© 2024 Copyright:</span>
+    <div
+      className={`bg-neutral-200 p-6 text-center ${
+        isDarkMode ? 'bg-sky-950' : 'bg-sky-600'
+      } -mt-2`}
+    >
+      <span className='text-neutral-100'>© 2024 Copyright:</span>
       <a className='font-semibold text-neutral-600 dark:text-neutral-100 ml-2'>
         Franco A Baisch
       </a>

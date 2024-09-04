@@ -1,47 +1,61 @@
 import React from 'react';
 import { Card, Tag, Button } from 'antd';
-import type { IProject } from '../../../types/types';
+import type { IProject } from '../../../common/interfaces';
+
+import SectionDivider from '../../divider/Divider';
 
 const { Meta } = Card;
 
 interface ProjectCardProps {
   project: IProject;
   onClick: () => void;
+  isDarkMode: boolean;
 }
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  onClick,
+  isDarkMode,
+}) => {
   return (
     <Card
       hoverable
       cover={
         <div className='overflow-hidden'>
-          <img
-            alt={project.title}
-            src={project.image}
-            style={{
-              objectFit: 'cover',
-              transition: 'transform 0.3s ease-in-out',
-            }}
-          />
+          <img alt={project.title} src={project.image} />
         </div>
       }
-      style={{
-        transition: 'transform 0.3s ease-in-out',
-        cursor: 'pointer',
-      }}
-      className='hover:scale-105'
+      className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+        isDarkMode ? 'border-gray-600' : 'border-gray-300'
+      } transition ease-in-out duration-300 hover:scale-105 border ${
+        isDarkMode ? 'border-gray-600' : 'border-gray-300'
+      }`}
     >
       <Meta title={project.title} />
-      <div className='mt-2'>
+      <div className='mt-2 mb-6'>
         {project.technologies.map((tech) => (
-          <Tag color='blue' key={tech} className='mt-2 py-1'>
+          <Tag
+            color={`${isDarkMode ? '#374151' : '#0284c7'}`}
+            key={tech}
+            className='mt-2 py-1'
+          >
             {tech}
           </Tag>
         ))}
       </div>
-      <div className='border-t-4 border-sky-400 mb-2 mt-6'></div>
-      <Button type='primary' className='mt-4 bg-sky-500 py-6' onClick={onClick}>
-        Ver mais
-      </Button>
+      <SectionDivider isDarkMode={isDarkMode} />
+      <button
+        type='primary'
+        className={`${
+          isDarkMode ? 'bg-gray-800' : 'bg-white'
+        } inline-flex items-center ${
+          isDarkMode ? 'text-white' : 'text-black'
+        } font-bold py-3 px-6 rounded-full border border-gray-300 shadow ${
+          isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+        }`}
+        onClick={onClick}
+      >
+        <span>Ver mais</span>
+      </button>
     </Card>
   );
 };

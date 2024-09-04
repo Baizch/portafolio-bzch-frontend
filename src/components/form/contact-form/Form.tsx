@@ -19,7 +19,11 @@ interface FormData {
   message: string;
 }
 
-const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  isDarkMode: boolean;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ isDarkMode }) => {
   const [formInstance] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -76,6 +80,7 @@ const ContactForm: React.FC = () => {
           isSubmitting={isSubmitting}
           setIsError={setIsError}
           sendEmail={sendEmail}
+          isDarkMode={isDarkMode}
         />
       )}
 
@@ -84,6 +89,7 @@ const ContactForm: React.FC = () => {
           formData={formData}
           isSubmitting={isSubmitting}
           sendEmail={sendEmail}
+          isDarkMode={isDarkMode}
         />
       )}
     </>

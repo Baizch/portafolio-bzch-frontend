@@ -8,6 +8,7 @@ interface InitialFormProps {
   setFormData: (formData: FormData) => void;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
+  isDarkMode: boolean;
 }
 
 const InitialForm: React.FC<InitialFormProps> = ({
@@ -15,6 +16,7 @@ const InitialForm: React.FC<InitialFormProps> = ({
   setFormData,
   isSubmitting,
   sendEmail,
+  isDarkMode,
 }) => {
   const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
@@ -37,6 +39,9 @@ const InitialForm: React.FC<InitialFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData({ ...formData, firstName: e.target.value });
           }}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
         />
       </Form.Item>
 
@@ -51,6 +56,9 @@ const InitialForm: React.FC<InitialFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData({ ...formData, lastName: e.target.value });
           }}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
         />
       </Form.Item>
 
@@ -69,6 +77,9 @@ const InitialForm: React.FC<InitialFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData({ ...formData, email: e.target.value });
           }}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
         />
       </Form.Item>
 
@@ -81,6 +92,9 @@ const InitialForm: React.FC<InitialFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData({ ...formData, subject: e.target.value });
           }}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
         />
       </Form.Item>
 
@@ -94,18 +108,25 @@ const InitialForm: React.FC<InitialFormProps> = ({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData({ ...formData, message: e.target.value });
           }}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
         />
       </Form.Item>
 
       <Form.Item>
         {!isSubmitting && (
-          <Button
+          <button
             type='primary'
             htmlType='submit'
-            className='bg-sky-500 text-white py-6 mt-4'
+            className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+              isDarkMode ? 'text-white' : 'text-black'
+            } font-bold py-3 px-4 rounded-full border border-gray-300 shadow ${
+              isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+            } mt-4`}
           >
             Enviar
-          </Button>
+          </button>
         )}
         {isSubmitting && <Spin size='large' className='mt-4' />}
       </Form.Item>

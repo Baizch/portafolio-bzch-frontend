@@ -7,12 +7,14 @@ interface ResendFormProps {
   formData: FormData | null;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
+  isDarkMode: boolean;
 }
 
 const ResendForm: React.FC<ResendFormProps> = ({
   formData,
   isSubmitting,
   sendEmail,
+  isDarkMode,
 }) => {
   const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
@@ -32,7 +34,11 @@ const ResendForm: React.FC<ResendFormProps> = ({
         name='firstName'
         rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
       >
-        <Input />
+        <Input
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
+        />
       </Form.Item>
 
       <Form.Item
@@ -42,7 +48,11 @@ const ResendForm: React.FC<ResendFormProps> = ({
           { required: true, message: 'Por favor, insira seu sobrenome!' },
         ]}
       >
-        <Input />
+        <Input
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
+        />
       </Form.Item>
 
       <Form.Item
@@ -56,7 +66,11 @@ const ResendForm: React.FC<ResendFormProps> = ({
           },
         ]}
       >
-        <Input />
+        <Input
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
+        />
       </Form.Item>
 
       <Form.Item
@@ -64,7 +78,11 @@ const ResendForm: React.FC<ResendFormProps> = ({
         name='subject'
         rules={[{ required: true, message: 'Por favor, insira o assunto!' }]}
       >
-        <Input />
+        <Input
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
+        />
       </Form.Item>
 
       <Form.Item
@@ -72,18 +90,27 @@ const ResendForm: React.FC<ResendFormProps> = ({
         name='message'
         rules={[{ required: true, message: 'Por favor, insira sua mensagem!' }]}
       >
-        <TextArea rows={4} />
+        <TextArea
+          rows={4}
+          className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+            isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
+          } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
+        />
       </Form.Item>
 
       <Form.Item>
         {!isSubmitting && (
-          <Button
+          <button
             type='primary'
             htmlType='submit'
-            className='bg-sky-500 text-white py-6 mt-4'
+            className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
+              isDarkMode ? 'text-white' : 'text-black'
+            } font-bold py-3 px-4 rounded-full border border-gray-300 shadow ${
+              isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+            } mt-4`}
           >
             Enviar
-          </Button>
+          </button>
         )}
         {isSubmitting && <Spin size='large' className='mt-4' />}
       </Form.Item>

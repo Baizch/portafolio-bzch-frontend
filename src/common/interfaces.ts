@@ -8,6 +8,16 @@ export interface IProject {
   githubLink: string;
 }
 
+export interface ITechnologies {
+  name: string;
+  icon: string;
+}
+
 export interface NavBarProps {
   scrollToSection: (sectionId: string) => void;
+  isDarkMode: boolean;
+}
+
+export interface DarkModeProps {
+  isDarkMode: boolean;
 }

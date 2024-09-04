@@ -1,17 +1,14 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
 
+import { DarkModeProps, ITechnologies } from '../../common/interfaces';
+
 import SectionDivider from '../../components/divider/Divider';
 import Title from '../../components/title/Title';
 
 const { Meta } = Card;
 
-const Technologies: React.FC = () => {
-  interface ITechnologies {
-    name: string;
-    icon: string;
-  }
-
+const Technologies = ({ isDarkMode }: DarkModeProps) => {
   // TO DO: retornar do back
   const technologies: ITechnologies[] = [
     {
@@ -77,10 +74,13 @@ const Technologies: React.FC = () => {
   ];
 
   return (
-    <section id='tecnologias' className='bg-white py-12'>
+    <section
+      id='tecnologias'
+      className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} py-12`}
+    >
       <div className='max-w-5xl mx-auto px-4'>
-        <SectionDivider />
-        <Title title='Tecnologias' />
+        <SectionDivider isDarkMode={isDarkMode} />
+        <Title title='Tecnologias' isDarkMode={isDarkMode} />
 
         <Row gutter={[16, 16]} justify='center'>
           {technologies.map((tech, key) => (
@@ -88,12 +88,11 @@ const Technologies: React.FC = () => {
               <Card
                 hoverable
                 cover={
-                  <img
-                    alt={tech.name}
-                    src={tech.icon}
-                    style={{ padding: '20px', height: '100px' }}
-                  />
+                  <img alt={tech.name} src={tech.icon} className='p-5 h-24' />
                 }
+                className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} border ${
+                  isDarkMode ? 'border-gray-600' : 'border-gray-300'
+                }`}
               >
                 <Meta title={tech.name} />
               </Card>

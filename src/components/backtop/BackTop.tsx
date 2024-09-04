@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpOutlined } from '@ant-design/icons';
+
 import '../../styles/animations.css';
 
-const BackToTopButton: React.FC = () => {
-  const [showButton, setShowButton] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+const BackToTopButton = (): React.ReactElement | null => {
+  const [showButton, setShowButton] = useState<boolean>(false);
+  const [fadeOut, setFadeOut] = useState<boolean>(false);
 
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     if (window.scrollY > 300) {
       setShowButton(true);
       setFadeOut(false);
@@ -16,7 +17,7 @@ const BackToTopButton: React.FC = () => {
     }
   };
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     const scrollDuration = 1500;
     const scrollStep = -window.scrollY / (scrollDuration / 15);
 
