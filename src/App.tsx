@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ConfigProvider, theme } from 'antd';
 
 import './App.css';
@@ -15,7 +15,14 @@ import Contact from './sections/contact/Contact';
 
 function App() {
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const savedDarkMode = localStorage.getItem('isDarkMode');
+    return savedDarkMode === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   const handleClick = (): void => {
     setIsDarkMode((previousValue: boolean) => !previousValue);

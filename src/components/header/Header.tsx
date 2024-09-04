@@ -33,6 +33,7 @@ const Header = ({ isDarkMode, handleClick }: HeaderProps) => {
           unCheckedChildren={<SunOutlined />}
           onChange={handleClick}
           className='mr-4'
+          value={isDarkMode}
         />
         <MobileMenu toggleMenu={toggleMenu} />
         <DesktopNavBar scrollToSection={scrollToSection} />
