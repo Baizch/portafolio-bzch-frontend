@@ -13,6 +13,14 @@ export interface ITechnologies {
   icon: string;
 }
 
+export interface IContactFormData {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
 export interface NavBarProps {
   scrollToSection?: (
     sectionId: string,

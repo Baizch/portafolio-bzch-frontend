@@ -1,21 +1,16 @@
 import React from 'react';
 import { Card, Tag, Button } from 'antd';
-import type { IProject } from '../../../common/interfaces';
+import { IProject, DarkModeProps } from '../../../common/interfaces';
 
 import SectionDivider from '../../divider/Divider';
 
 const { Meta } = Card;
 
-interface ProjectCardProps {
+interface ProjectCardProps extends DarkModeProps {
   project: IProject;
   onClick: () => void;
-  isDarkMode: boolean;
 }
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  project,
-  onClick,
-  isDarkMode,
-}) => {
+const ProjectCard = ({ project, onClick, isDarkMode }: ProjectCardProps) => {
   return (
     <Card
       hoverable
@@ -44,7 +39,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
       <SectionDivider isDarkMode={isDarkMode} />
       <button
-        type='primary'
         className={`${
           isDarkMode ? 'bg-gray-800' : 'bg-white'
         } inline-flex items-center ${

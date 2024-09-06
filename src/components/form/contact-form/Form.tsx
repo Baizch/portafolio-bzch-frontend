@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'antd';
 import emailjs from '@emailjs/browser';
 
-import { DarkModeProps } from '../../../common/interfaces';
+import { DarkModeProps, IContactFormData } from '../../../common/interfaces';
 
 import Success from '../success-component/Success';
 import Error from '../error-component/Error';
@@ -13,27 +13,20 @@ const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const userId = import.meta.env.VITE_EMAILJS_USER_ID;
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
 const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   const [formInstance] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [isResend, setIsResend] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData | null>(null);
+  const [contactFormData, setContactFormData] =
+    useState<IContactFormData | null>(null);
   const [isEmptyForm, setIsEmptyForm] = useState<boolean>(true);
 
   const sendEmail = (values: any) => {
     setIsSubmitting(true);
 
-    setFormData({
+    setContactFormData({
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
@@ -42,7 +35,7 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
     });
 
     emailjs
-      .send(serviceId, templateId, formData, userId)
+      .send(serviceId, templateId, contactFormData, userId)
       .then((result: any) => {
         console.log('Mensagem enviada com sucesso!', result);
         setIsSubmitting(false);
@@ -77,8 +70,8 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
 
       {!isSuccess && !isError && isEmptyForm && (
         <InitialForm
-          formData={formData}
-          setFormData={setFormData}
+          contactFormData={contactFormData}
+          setContactFormData={setContactFormData}
           isSubmitting={isSubmitting}
           sendEmail={sendEmail}
           isDarkMode={isDarkMode}
@@ -87,7 +80,7 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
 
       {isResend && !isSuccess && (
         <ResendForm
-          formData={formData}
+          contactFormData={contactFormData}
           isSubmitting={isSubmitting}
           sendEmail={sendEmail}
           isDarkMode={isDarkMode}

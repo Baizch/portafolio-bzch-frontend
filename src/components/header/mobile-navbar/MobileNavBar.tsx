@@ -16,8 +16,8 @@ const MobileNavBar = ({
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('sobre', 250);
-            toggleMenu();
+            scrollToSection?.('sobre', 250);
+            toggleMenu?.();
           }}
         >
           Sobre mim
@@ -25,8 +25,8 @@ const MobileNavBar = ({
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('tecnologias', 250);
-            toggleMenu();
+            scrollToSection?.('tecnologias', 250);
+            toggleMenu?.();
           }}
         >
           Tecnologias
@@ -34,8 +34,8 @@ const MobileNavBar = ({
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('projetos', 250);
-            toggleMenu();
+            scrollToSection?.('projetos', 250);
+            toggleMenu?.();
           }}
         >
           Projetos
@@ -43,8 +43,8 @@ const MobileNavBar = ({
         <button
           className='block text-gray-800 dark:text-gray-200 hover:text-yellow-300 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium'
           onClick={() => {
-            scrollToSection('contato', 250);
-            toggleMenu();
+            scrollToSection?.('contato', 250);
+            toggleMenu?.();
           }}
         >
           Contato

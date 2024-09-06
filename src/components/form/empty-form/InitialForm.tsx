@@ -1,26 +1,35 @@
 import React, { useRef } from 'react';
 import { Form, Input, Spin } from 'antd';
 
-import { DarkModeProps } from 'src/common/interfaces';
+import { DarkModeProps, IContactFormData } from 'src/common/interfaces';
 
 const { TextArea } = Input;
 
 interface InitialFormProps extends DarkModeProps {
-  formData: FormData | null;
-  setFormData: (formData: FormData) => void;
+  contactFormData: IContactFormData | null;
+  setContactFormData: (contactFormData: IContactFormData) => void;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
 }
 
 const InitialForm = ({
-  formData,
-  setFormData,
+  contactFormData,
+  setContactFormData,
   isSubmitting,
   sendEmail,
   isDarkMode,
 }: InitialFormProps) => {
   const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
+
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName: string = event.target.getAttribute('id');
+
+    setContactFormData({
+      ...contactFormData,
+      [fieldName]: event.target.value,
+    });
+  };
 
   return (
     <Form
@@ -37,9 +46,8 @@ const InitialForm = ({
         rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
       >
         <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, firstName: e.target.value });
-          }}
+          id='firstName'
+          onChange={onChangeHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
@@ -54,9 +62,8 @@ const InitialForm = ({
         ]}
       >
         <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, lastName: e.target.value });
-          }}
+          id='lastName'
+          onChange={onChangeHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
@@ -75,9 +82,8 @@ const InitialForm = ({
         ]}
       >
         <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, email: e.target.value });
-          }}
+          id='email'
+          onChange={onChangeHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
@@ -90,9 +96,8 @@ const InitialForm = ({
         rules={[{ required: true, message: 'Por favor, insira o assunto!' }]}
       >
         <Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, subject: e.target.value });
-          }}
+          id='subject'
+          onChange={onChangeHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}
@@ -106,9 +111,8 @@ const InitialForm = ({
       >
         <TextArea
           rows={4}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData({ ...formData, message: e.target.value });
-          }}
+          id='message'
+          onChange={onChangeHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}

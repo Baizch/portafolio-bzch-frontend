@@ -42,20 +42,38 @@ const BackToTopButton = ({
   }, []);
 
   return (
-    showButton && (
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-4 right-4 ${
-          isDarkMode ? 'bg-sky-800' : 'bg-blue-500'
-        } text-white p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 z-50 ${
-          fadeOut ? 'fade-out' : 'fade-in'
-        }`}
-        aria-label='Voltar ao topo'
-      >
-        <ArrowUpOutlined />
-      </button>
-    )
+    <>
+      {showButton && (
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-4 right-4 ${
+            isDarkMode ? 'bg-sky-800' : 'bg-blue-500'
+          } text-white p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 z-50 ${
+            fadeOut ? 'fade-out' : 'fade-in'
+          }`}
+          aria-label='Voltar ao topo'
+        >
+          <ArrowUpOutlined />
+        </button>
+      )}
+    </>
   );
+
+  // OU
+
+  // return showButton ? (
+  //   <button
+  //     onClick={scrollToTop}
+  //     className={`fixed bottom-4 right-4 ${
+  //       isDarkMode ? 'bg-sky-800' : 'bg-blue-500'
+  //     } text-white p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 z-50 ${
+  //       fadeOut ? 'fade-out' : 'fade-in'
+  //     }`}
+  //     aria-label='Voltar ao topo'
+  //   >
+  //     <ArrowUpOutlined />
+  //   </button>
+  // ) : null;
 };
 
 export default BackToTopButton;
