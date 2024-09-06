@@ -19,22 +19,30 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [isResend, setIsResend] = useState<boolean>(false);
-  const [contactFormData, setContactFormData] = useState<IContactFormData>({});
+  const [contactFormData, setContactFormData] = useState<IContactFormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
   const [isEmptyForm, setIsEmptyForm] = useState<boolean>(true);
 
   const sendEmail = (values: any) => {
     setIsSubmitting(true);
 
-    setContactFormData({
+    const updatedContactFormData: IContactFormData = {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
       subject: values.subject,
       message: values.message,
-    });
+    };
+
+    setContactFormData(updatedContactFormData);
 
     emailjs
-      .send(serviceId, templateId, contactFormData, userId)
+      .send(serviceId, templateId, updatedContactFormData, userId)
       .then((result: any) => {
         console.log('Mensagem enviada com sucesso!', result);
         setIsSubmitting(false);
@@ -49,7 +57,13 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   };
 
   const handleCancel = () => {
-    setContactFormData(null);
+    setContactFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
     setIsEmptyForm(true);
     setIsError(false);
     formInstance.resetFields();
