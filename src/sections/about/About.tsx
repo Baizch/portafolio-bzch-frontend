@@ -51,7 +51,7 @@ const About = ({ isDarkMode }: DarkModeProps) => (
           </button>
         </a>
         <button
-          onClick={() => scrollToSection('contato')}
+          onClick={() => scrollToSection('contato', 80)}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'text-white' : 'text-black'
           } font-bold py-3 px-4 rounded-full border border-gray-300 shadow ${
