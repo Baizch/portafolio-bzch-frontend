@@ -36,6 +36,7 @@
     "@storybook/addon-links": "^8.2.8",
     "@storybook/builder-vite": "^8.2.8",
     "@emailjs/browser": "^4.4.1",
-    "@ant-design/icons": "^5.4.0"
+    "@ant-design/icons": "^5.4.0",
+    "@rollup/rollup-linux-x64-gnu": "^4.21.2"
   }
 }
