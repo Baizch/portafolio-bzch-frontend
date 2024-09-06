@@ -23,7 +23,7 @@ const InitialForm = ({
   const [formInstance] = Form.useForm();
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fieldName: string = event.target.getAttribute('id');
+    const fieldName: string = event.target.getAttribute('id') || '';
 
     setContactFormData({
       ...contactFormData,
@@ -122,8 +122,7 @@ const InitialForm = ({
       <Form.Item>
         {!isSubmitting && (
           <button
-            type='primary'
-            htmlType='submit'
+            type='submit'
             className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
               isDarkMode ? 'text-white' : 'text-black'
             } font-bold py-3 px-4 rounded-full border border-gray-300 shadow ${

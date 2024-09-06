@@ -1,21 +1,22 @@
 import React, { useRef } from 'react';
 import { Form, Input, Button, Spin } from 'antd';
 
+import { DarkModeProps, IContactFormData } from '../../../common/interfaces';
+
 const { TextArea } = Input;
 
-interface ResendFormProps {
-  formData: FormData | null;
+interface ResendFormProps extends DarkModeProps {
+  contactFormData: IContactFormData | null;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
-  isDarkMode: boolean;
 }
 
-const ResendForm: React.FC<ResendFormProps> = ({
-  formData,
+const ResendForm = ({
+  contactFormData,
   isSubmitting,
   sendEmail,
   isDarkMode,
-}) => {
+}: ResendFormProps) => {
   const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
 
@@ -27,7 +28,7 @@ const ResendForm: React.FC<ResendFormProps> = ({
       onFinish={sendEmail}
       layout='vertical'
       autoComplete='off'
-      initialValues={formData}
+      initialValues={contactFormData}
     >
       <Form.Item
         label='Nome'
@@ -101,8 +102,7 @@ const ResendForm: React.FC<ResendFormProps> = ({
       <Form.Item>
         {!isSubmitting && (
           <button
-            type='primary'
-            htmlType='submit'
+            type='submit'
             className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
               isDarkMode ? 'text-white' : 'text-black'
             } font-bold py-3 px-4 rounded-full border border-gray-300 shadow ${
