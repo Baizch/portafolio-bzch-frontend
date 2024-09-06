@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Form, Input, Spin } from 'antd';
 
 import { DarkModeProps, IContactFormData } from 'src/common/interfaces';
@@ -19,7 +19,6 @@ const InitialForm = ({
   sendEmail,
   isDarkMode,
 }: InitialFormProps) => {
-  const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,10 +30,20 @@ const InitialForm = ({
     });
   };
 
+  const onChangeTextAreaHandler = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const fieldName = event.target.getAttribute('id') || '';
+
+    setContactFormData({
+      ...contactFormData,
+      [fieldName]: event.target.value,
+    });
+  };
+
   return (
     <Form
       form={formInstance}
-      ref={form}
       name='contact'
       onFinish={sendEmail}
       layout='vertical'
@@ -112,7 +121,7 @@ const InitialForm = ({
         <TextArea
           rows={4}
           id='message'
-          onChange={onChangeHandler}
+          onChange={onChangeTextAreaHandler}
           className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} ${
             isDarkMode ? 'focus:bg-gray-800' : 'bg-white'
           } ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-white'}`}

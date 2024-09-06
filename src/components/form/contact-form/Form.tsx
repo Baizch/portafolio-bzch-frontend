@@ -50,7 +50,7 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   };
 
   const handleCancel = () => {
-    setFormData(null);
+    setContactFormData(null);
     setIsEmptyForm(true);
     setIsError(false);
     formInstance.resetFields();

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Form, Input, Button, Spin } from 'antd';
 
 import { DarkModeProps, IContactFormData } from '../../../common/interfaces';
@@ -17,18 +17,16 @@ const ResendForm = ({
   sendEmail,
   isDarkMode,
 }: ResendFormProps) => {
-  const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
 
   return (
     <Form
       form={formInstance}
-      ref={form}
       name='contact'
       onFinish={sendEmail}
       layout='vertical'
       autoComplete='off'
-      initialValues={contactFormData}
+      initialValues={contactFormData || {}}
     >
       <Form.Item
         label='Nome'
