@@ -1,11 +1,9 @@
 import React from 'react';
 import { MenuOutlined } from '@ant-design/icons';
 
-interface MobileMenuProps {
-  toggleMenu: (isOpen: boolean) => void;
-}
+import { NavBarProps } from '../../../common/interfaces';
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ toggleMenu }) => {
+const MobileMenu = ({ toggleMenu }: NavBarProps) => {
   return (
     <div className='absolute left-4 md:hidden'>
       <button

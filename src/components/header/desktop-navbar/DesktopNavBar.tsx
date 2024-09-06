@@ -1,7 +1,7 @@
 import React from 'react';
 import type { NavBarProps } from 'src/common/interfaces';
 
-const DesktopNavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
+const DesktopNavBar = ({ scrollToSection }: NavBarProps) => {
   return (
     <nav className='space-x-8 hidden md:flex'>
       <button

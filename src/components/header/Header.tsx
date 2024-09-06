@@ -43,6 +43,7 @@ const Header = ({ isDarkMode, handleClick }: HeaderProps) => {
         <MobileNavBar
           scrollToSection={scrollToSection}
           isDarkMode={isDarkMode}
+          toggleMenu={toggleMenu}
         />
       )}
     </header>

@@ -1,6 +1,6 @@
 export const scrollToSection = (
   sectionId: string,
-  offset: number = 0,
+  offset: number,
   duration: number = 1000
 ): void => {
   const targetSection = document.getElementById(sectionId);

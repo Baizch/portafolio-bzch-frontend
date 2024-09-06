@@ -14,8 +14,13 @@ export interface ITechnologies {
 }
 
 export interface NavBarProps {
-  scrollToSection: (sectionId: string) => void;
-  isDarkMode: boolean;
+  scrollToSection?: (
+    sectionId: string,
+    offset: number,
+    duration?: number
+  ) => void;
+  isDarkMode?: boolean;
+  toggleMenu?: () => void;
 }
 
 export interface DarkModeProps {

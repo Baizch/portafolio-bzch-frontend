@@ -1,10 +1,11 @@
 import React from 'react';
 import type { NavBarProps } from 'src/common/interfaces';
 
-const MobileNavBar: React.FC<NavBarProps> = ({
+const MobileNavBar = ({
   scrollToSection,
   isDarkMode,
-}) => {
+  toggleMenu,
+}: NavBarProps) => {
   return (
     <nav
       className={`md:hidden ${
