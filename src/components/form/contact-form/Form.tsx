@@ -70,7 +70,7 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
 
       {!isSuccess && !isError && isEmptyForm && (
         <InitialForm
-          contactFormData={contactFormData}
+          contactFormData={contactFormData || {}}
           setContactFormData={setContactFormData}
           isSubmitting={isSubmitting}
           sendEmail={sendEmail}
@@ -80,7 +80,7 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
 
       {isResend && !isSuccess && (
         <ResendForm
-          contactFormData={contactFormData}
+          contactFormData={contactFormData || {}}
           isSubmitting={isSubmitting}
           sendEmail={sendEmail}
           isDarkMode={isDarkMode}
