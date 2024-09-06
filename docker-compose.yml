@@ -1,13 +1,12 @@
 services:
   app:
     container_name: portafolio-bzch-frontend
-    build:
-      context: .
+    build: .
     ports:
       - '5173:5173'
     volumes:
       - .:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
+      - /usr/src/app/node_modules
     command: npm run dev
 
   storybook:
@@ -17,8 +16,5 @@ services:
       - '6006:6006'
     volumes:
       - .:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
+      - /usr/src/app/node_modules
     command: npm run storybook
-
-volumes:
-node_modules:
