@@ -28,6 +28,16 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   });
   const [isEmptyForm, setIsEmptyForm] = useState<boolean>(true);
 
+  const transformContactFormData = (
+    data: IContactFormData
+  ): Record<string, unknown> => ({
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    subject: data.subject,
+    message: data.message,
+  });
+
   const sendEmail = (values: any) => {
     setIsSubmitting(true);
 
@@ -42,7 +52,12 @@ const ContactForm = ({ isDarkMode }: DarkModeProps) => {
     setContactFormData(updatedContactFormData);
 
     emailjs
-      .send(serviceId, templateId, updatedContactFormData, userId)
+      .send(
+        serviceId,
+        templateId,
+        transformContactFormData(updatedContactFormData),
+        userId
+      )
       .then((result: any) => {
         console.log('Mensagem enviada com sucesso!', result);
         setIsSubmitting(false);
