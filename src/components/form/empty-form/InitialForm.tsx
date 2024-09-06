@@ -1,23 +1,24 @@
 import React, { useRef } from 'react';
-import { Form, Input, Button, Spin } from 'antd';
+import { Form, Input, Spin } from 'antd';
+
+import { DarkModeProps } from 'src/common/interfaces';
 
 const { TextArea } = Input;
 
-interface InitialFormProps {
+interface InitialFormProps extends DarkModeProps {
   formData: FormData | null;
   setFormData: (formData: FormData) => void;
   isSubmitting: boolean;
   sendEmail: (values: any) => void;
-  isDarkMode: boolean;
 }
 
-const InitialForm: React.FC<InitialFormProps> = ({
+const InitialForm = ({
   formData,
   setFormData,
   isSubmitting,
   sendEmail,
   isDarkMode,
-}) => {
+}: InitialFormProps) => {
   const form = useRef<HTMLFormElement | null>(null);
   const [formInstance] = Form.useForm();
 

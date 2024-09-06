@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form } from 'antd';
 import emailjs from '@emailjs/browser';
 
+import { DarkModeProps } from '../../../common/interfaces';
+
 import Success from '../success-component/Success';
 import Error from '../error-component/Error';
 import InitialForm from '../empty-form/InitialForm';
@@ -19,11 +21,7 @@ interface FormData {
   message: string;
 }
 
-interface ContactFormProps {
-  isDarkMode: boolean;
-}
-
-const ContactForm: React.FC<ContactFormProps> = ({ isDarkMode }) => {
+const ContactForm = ({ isDarkMode }: DarkModeProps) => {
   const [formInstance] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -70,7 +68,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ isDarkMode }) => {
       {isSuccess && <Success />}
 
       {isError && !isResend && (
-        <Error setIsResend={setIsResend} handleCancel={handleCancel} />
+        <Error
+          setIsResend={setIsResend}
+          handleCancel={handleCancel}
+          isDarkMode={isDarkMode}
+        />
       )}
 
       {!isSuccess && !isError && isEmptyForm && (
@@ -78,7 +80,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ isDarkMode }) => {
           formData={formData}
           setFormData={setFormData}
           isSubmitting={isSubmitting}
-          setIsError={setIsError}
           sendEmail={sendEmail}
           isDarkMode={isDarkMode}
         />

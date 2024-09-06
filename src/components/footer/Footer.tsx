@@ -14,6 +14,7 @@ const Footer = ({ isDarkMode }: DarkModeProps) => (
     <div className='flex justify-center'>
       <a
         href='https://www.linkedin.com/in/franco-baisch/'
+        target='_blank'
         className='mr-6 text-neutral-600 dark:text-neutral-200 mt-10'
         aria-label='LinkedIn'
       >
@@ -21,6 +22,7 @@ const Footer = ({ isDarkMode }: DarkModeProps) => (
       </a>
       <a
         href='https://github.com/Baizch'
+        target='_blank'
         className='text-neutral-600 dark:text-neutral-200 mt-10'
         aria-label='Github'
       >

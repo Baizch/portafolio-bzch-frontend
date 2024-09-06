@@ -12,7 +12,7 @@ const Contact = ({ isDarkMode }: DarkModeProps) => {
       id='contato'
       className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} py-12`}
     >
-      <div className='max-w-5xl mx-auto px-4'>
+      <div className='max-w-full mx-auto px-4'>
         <SectionDivider isDarkMode={isDarkMode} />
         <Title title='Contato' isDarkMode={isDarkMode} />
         <ContactForm isDarkMode={isDarkMode} />

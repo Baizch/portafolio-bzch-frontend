@@ -33,7 +33,7 @@ function App() {
       theme={{ algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm }}
     >
       <div>
-        <BackToTopButton />
+        <BackToTopButton isDarkMode={isDarkMode} />
         <Header isDarkMode={isDarkMode} handleClick={handleClick} />
         <About isDarkMode={isDarkMode} />
         <Technologies isDarkMode={isDarkMode} />
