@@ -34,7 +34,10 @@ const About = ({ isDarkMode }: DarkModeProps) => (
         um papo e transformar essa ideia em realidade.
       </p>
       <Space>
-        <a href='/CV_Franco_Baisch.pdf' download='curriculo_franco_baisch.pdf'>
+        <a
+          href='/CV_Franco_Baisch.pdf'
+          download='Franco-Baisch-Full-Stack-Developer-2024.pdf'
+        >
           <button
             className={`${
               isDarkMode ? 'bg-gray-800' : 'bg-white'
